@@ -1,6 +1,6 @@
 //! Interactive setup wizard for OpenAB.
 
-use std::io::{self, Write};
+use std::io::{self, IsTerminal, Write};
 use std::path::{Path, PathBuf};
 
 // ---------------------------------------------------------------------------
@@ -43,7 +43,7 @@ macro_rules! cprintln {
 // ---------------------------------------------------------------------------
 
 fn is_interactive() -> bool {
-    atty::is(atty::Stream::Stdout) && atty::is(atty::Stream::Stdin)
+    std::io::stdin().is_terminal() && std::io::stdout().is_terminal()
 }
 
 fn prompt(prompt_text: &str) -> String {
