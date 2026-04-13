@@ -3,10 +3,10 @@ bot_token = "${DISCORD_BOT_TOKEN}"
 allowed_channels = ["1234567890"]
 # allowed_users = ["<YOUR_DISCORD_USER_ID>"]  # empty or omitted = allow all users
 
-[agent]
-command = "kiro-cli"
-args = ["acp", "--trust-all-tools"]
-working_dir = "/home/agent"
+# [agent]
+# command = "kiro-cli"
+# args = ["acp", "--trust-all-tools"]
+# working_dir = "/home/agent"
 
 # [agent]
 # command = "claude"
@@ -20,11 +20,11 @@ working_dir = "/home/agent"
 # working_dir = "/home/agent"
 # env = { OPENAI_API_KEY = "${OPENAI_API_KEY}" }
 
-# [agent]
-# command = "gemini"
-# args = ["--acp"]
-# working_dir = "/home/agent"
-# env = { GEMINI_API_KEY = "${GEMINI_API_KEY}" }
+[agent]
+command = "gemini"
+args = ["--acp --model gemini-2.5-flash"]
+working_dir = "/home/agent"
+env = { GEMINI_API_KEY = "${GEMINI_API_KEY}"}
 
 # [agent]
 # command = "copilot"
