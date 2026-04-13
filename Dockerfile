@@ -26,6 +26,7 @@ WORKDIR /home/node
 
 COPY --from=builder --chown=node:node /build/target/release/openab /usr/local/bin/openab
 
+COPY config.toml /etc/openab/config.toml
 USER node
 HEALTHCHECK --interval=30s --timeout=5s --retries=3 \
   CMD pgrep -x openab || exit 1
