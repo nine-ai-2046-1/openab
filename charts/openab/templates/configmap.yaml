@@ -24,6 +24,12 @@ data:
     {{- end }}
     {{- end }}
     allowed_users = {{ $cfg.discord.allowedUsers | default list | toJson }}
+    {{- if $cfg.discord.allowBotMessages }}
+    allow_bot_messages = "{{ $cfg.discord.allowBotMessages }}"
+    {{- end }}
+    {{- if $cfg.discord.trustedBotIds }}
+    trusted_bot_ids = {{ $cfg.discord.trustedBotIds | toJson }}
+    {{- end }}
 
     [agent]
     command = "{{ $cfg.command }}"
