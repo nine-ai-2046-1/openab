@@ -86,8 +86,8 @@ OUT=$(helm template test "$CHART_DIR" 2>&1)
 if echo "$OUT" | grep -q 'allow_bot_messages = "off"'; then
   pass "default allow_bot_messages = \"off\" rendered"
 else
-  # With default "off" the template still renders it since the value is set
-  pass "allow_bot_messages present in default render (or omitted by design)"
+  fail "default allow_bot_messages = \"off\" not found in rendered output"
+  echo "$OUT"
 fi
 
 echo

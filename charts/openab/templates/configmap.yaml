@@ -34,6 +34,9 @@ data:
     {{- if regexMatch "e\\+|E\\+" (toString .) }}
     {{- fail (printf "discord.trustedBotIds contains a mangled ID: %s — use --set-string instead of --set for bot IDs" (toString .)) }}
     {{- end }}
+    {{- if not (regexMatch "^[0-9]{17,20}$" (toString .)) }}
+    {{- fail (printf "discord.trustedBotIds contains an invalid bot ID: %s — must be a 17-20 digit snowflake ID" (toString .)) }}
+    {{- end }}
     {{- end }}
     {{- if $cfg.discord.trustedBotIds }}
     trusted_bot_ids = {{ $cfg.discord.trustedBotIds | toJson }}
